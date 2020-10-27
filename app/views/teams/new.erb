@@ -1,16 +1,20 @@
-New team form with teamname(text), 
-parent name(text) and parent roll selector(checkbox)
-for each parent. Baby gender selector (buttons)
-
 <%= form_with model: @team do |f| %>
-    <%= f.label :teamname %>
-    <%= f.text_field :name %>
+    <%= f.label :teamname, "Teamname:" %><br>
+    <%= f.text_field :teamname %><br><br><br>
 
-<%= f.fields_for :parents do |parr| %>
+<%= f.fields_for :parents do |p| %>
 
-    <%= parr.label :name %>
-    <%= parr.text_field :name %>
+        <%= p.label :name, "Parent name:"%><br>
+        <%= p.text_field :name %><br>
 
-    <%= parr.label :roll %>
-    <%= parr.text_field :roll%>
+        <%= p.label :roll, "Is going to be a:" %><br>
+        <%= p.radio_button :roll, "Mommy" %> Mommy 
+        <%= p.radio_button :roll, "Daddy" %> Daddy
+        <%= p.radio_button :roll, "Parent" %> Parent<br><br>
+
+        
+    <% end %>
+We are expecting a:<br>
+    <%= f.submit "Boy", name: "gender" %> <%= f.submit "Girl", name: "gender" %> <%= f.submit "Baby", name: "gender"%>
+<% end %>
 
