@@ -2,6 +2,8 @@ class TeamsController < ApplicationController
 
     def new
         @team = Team.new
+        @team.parents.build
+        @team.parents.build
     end
 
     def create 

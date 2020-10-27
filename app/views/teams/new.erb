@@ -1,3 +1,16 @@
 New team form with teamname(text), 
-parrent name(text) and parrent roll selector(checkbox)
-for each parrent. Baby gender selector (buttons)
+parent name(text) and parent roll selector(checkbox)
+for each parent. Baby gender selector (buttons)
+
+<%= form_with model: @team do |f| %>
+    <%= f.label :teamname %>
+    <%= f.text_field :name %>
+
+<%= f.fields_for :parents do |parr| %>
+
+    <%= parr.label :name %>
+    <%= parr.text_field :name %>
+
+    <%= parr.label :roll %>
+    <%= parr.text_field :roll%>
+
