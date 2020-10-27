@@ -5,7 +5,7 @@ class ParentsController < ApplicationController
     end
     
     def show
-        @parent = Parent.find_by_id(params[id:])
+        @parent = Parent.find_by_id(params[:id])
     end
     
 end
