@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
     def create 
         @team = Team.new(team_params)
         if @team.save
-      
+          
             if params["gender"]["Boy"]
             
                 @baby_1 = @team.babies.build(baby_params)
@@ -19,10 +19,11 @@ class TeamsController < ApplicationController
                 @team.parents.last.babies << @baby_2
             
                 if @team.save
-                    redirect_to parents_path 
+                    redirect_to parents_path(:team_id => @team.id)
                 else               
                     render :new  
-                end      
+                end 
+
             elsif params["gender"]["Girl"]
                 @baby_1 = @team.babies.build(baby_params)
                 @baby_2 = @team.babies.build(baby_params)
@@ -35,6 +36,7 @@ class TeamsController < ApplicationController
                 else
                     render :new
                 end
+                
             elsif params["gender"]["Baby"]
                 @baby_1 = @team.babies.build
                 @baby_2 = @team.babies.build
