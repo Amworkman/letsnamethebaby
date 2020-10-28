@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parents_baby_names
   resources :babies
   resources :teams
   resources :parents
