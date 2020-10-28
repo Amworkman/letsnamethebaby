@@ -2,7 +2,7 @@
     <%= f.label :teamname, "Teamname:" %><br>
     <%= f.text_field :teamname %><br><br><br>
 
-<%= f.fields_for :parents do |p| %>
+    <%= f.fields_for :parents do |p| %>
 
         <%= p.label :name, "Parent name:"%><br>
         <%= p.text_field :name %><br>
