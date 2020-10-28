@@ -2,5 +2,108 @@ shows teamname and parrent name.
 Has form for baby name selection. 
 Has submit button. 
 Has button to search for names(baby name index). 
-Once added to the list, baby names
-become links to baby name show.
+search field for baby names.
+
+<p>Team:</p>
+    <h1> Teamname<%#= @team.teamname %></h1>
+    <%= @parent.name %><br><br><br>
+
+    <%= form_tag baby_name_path, :method => "get" do %>
+        <%= label_tag :search, "baby name info:"%><br>
+        <%= text_field_tag :search, params[:search], list: "baby_names_autocomplete"  %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>
+        <%= submit_tag("Get baby name info", :name => nil) %>
+        
+    <% end %>
+    <%= button_to "Get list of bay names", baby_names_path, :method => "get"%><br><br><br>
+
+
+    <%= form_with model: @parent do |f| %>
+        <%= f.fields_for :baby_names, @parent.baby_names[0] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[1] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist><br><br>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[2] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[3] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist><br><br>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[4] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>           
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[5] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist><br><br>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[6] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>          
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[7] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist><br><br>            
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[8] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist>         
+        <% end %>
+        <%= f.fields_for :baby_names, @parent.baby_names[9] do |b| %>
+            <%= b.text_field :name, list: "baby_names_autocomplete" %>
+            <datalist id="baby_names_autocomplete">
+                <% BabyName.all.each do |baby_name| %>
+                    <option value="<%= baby_name.name %>">
+                <% end %>
+            </datalist><br><br>            
+        <% end %>
+        <%= f.submit %>
+        
+    <% end %>
+    <%= button_to "Show top names", team_path(@team), :method => "get"%>
