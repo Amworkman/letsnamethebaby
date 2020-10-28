@@ -1,2 +1,7 @@
-select which parent you are
-(shows both parents as link to parent show)
+<p>team:</p>
+    <h1><%= @team.teamname %></h1><br>
+
+<h3>Who are you?</h3>
+<% @parents.each do |parent| %>
+    <%=link_to parent.name, parent_path(parent)%><br><br>
+<% end %>
