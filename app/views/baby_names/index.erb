@@ -1,1 +1,5 @@
 shows a list of baby names linked to baby name show
+
+<% @baby_names.each do |baby_name| %>
+    <%= link_to baby_name.name, baby_name_path(baby_name)%><br>
+<% end%>
