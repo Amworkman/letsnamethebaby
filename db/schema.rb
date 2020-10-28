@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_223232) do
+ActiveRecord::Schema.define(version: 2020_10_28_184740) do
 
   create_table "babies", force: :cascade do |t|
     t.string "gender"
     t.integer "parent_id"
-    t.integer "baby_name_id"
-    t.index ["baby_name_id"], name: "index_babies_on_baby_name_id"
+    t.integer "team_id"
     t.index ["parent_id"], name: "index_babies_on_parent_id"
   end
 
@@ -33,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_223232) do
     t.string "roll"
     t.integer "team_id"
     t.index ["team_id"], name: "index_parents_on_team_id"
+  end
+
+  create_table "parents_baby_names", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "baby_name_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["baby_name_id"], name: "index_parents_baby_names_on_baby_name_id"
+    t.index ["parent_id"], name: "index_parents_baby_names_on_parent_id"
   end
 
   create_table "teams", force: :cascade do |t|
