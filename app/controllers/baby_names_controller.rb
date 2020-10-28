@@ -19,6 +19,10 @@ class BabyNamesController < ApplicationController
         end
     end
 
+    def show
+        @baby_name = BabyName.find_by(name: params[:search])
+    end
+
     def edit 
         @baby_name = BabyName.find_by_id(params[:id])
     end
@@ -38,6 +42,7 @@ class BabyNamesController < ApplicationController
     private 
 
     def baby_name_params
+        params.require(:baby_name).permit(:name, :origin, :meaning, :gender, :variations, :search)
     end        
 
 end
