@@ -1,1 +1,5 @@
-Show the top matching names for parents
+<h1>Here are your matching names:</h1>
+
+<% @baby_names.each do |baby_name| %>
+    <h3><%= link_to baby_name.name, baby_name_path(baby_name) %></h3>
+<% end %>
