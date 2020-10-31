@@ -7,66 +7,16 @@ class TeamsController < ApplicationController
     end
 
     def create 
-        @team = Team.new(team_params)
+        @team = Team.new(team_params)       
+            
+        @baby = @team.babies.build(baby_params)
+           @team.parents.each { |parent| @baby.parents << parent }            
         if @team.save
-          
-            if params["gender"]["Boy"]
-            
-                @baby_1 = @team.babies.build(baby_params)
-                @baby_2 = @team.babies.build(baby_params)
-           
-                @team.parents.first.babies << @baby_1
-                @team.parents.last.babies << @baby_2
-            
-                if @team.save
-                    redirect_to parents_path(:team_id => @team.id)
-                else               
-                    render :new  
-                end 
-
-            elsif params["gender"]["Girl"]
-                @baby_1 = @team.babies.build(baby_params)
-                @baby_2 = @team.babies.build(baby_params)
-
-                @team.parents.first.babies << @baby_1
-                @team.parents.last.babies << @baby_2
-
-                if @team.save
-                    redirect_to parents_path 
-                else
-                    render :new
-                end
-                
-            elsif params["gender"]["Baby"]
-                @baby_1 = @team.babies.build
-                @baby_2 = @team.babies.build
-                @baby_3 = @team.babies.build
-                @baby_4 = @team.babies.build
-
-                @baby_1.gender = "Boy"
-                @baby_2.gender = "Girl"
-                @baby_3.gender = "Boy"
-                @baby_4.gender = "Girl"
-                
-                @team.parents.first.babies << @baby_1
-                @team.parents.first.babies << @baby_2
-                @team.parents.last.babies << @baby_3 
-                @team.parents.last.babies << @baby_4
-                
-                if @team.save
-                    redirect_to parents_path 
-                else
-                    render :new
-                    # with errors
-                end
-            else
-                render :new
-                # with errors
-            end
-        else
-            render :new
-            # with errors
-        end
+            redirect_to parents_path(:team_id => @team.id)
+        else               
+            render :new 
+            raise errors.full_message
+        end 
     end
 
     def edit
@@ -75,18 +25,25 @@ class TeamsController < ApplicationController
 
     def update 
         @team = Team.find_by_id(params[:id])
-        # team_params
-        
+        @team.update(team_params)
+        @baby = @team.babies.first
+        @baby.update(baby_params)
+
         if @team.save
             redirect_to parents_path
         else
            render :new
-           # with errors
+           raise errors.full_message
         end
     end
 
     def show 
         @team = Team.find_by_id(params[:id])
+
+        @parent_one_babies = @team.parents.first.baby_names
+        @parent_two_babies = @team.parents.last.baby_names
+
+        @baby_names = @team.baby_names_arr_dupes(@parent_one_babies, @parent_two_babies)
     end
 
     private 
