@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   resources :parents_baby_names
   resources :babies
   resources :teams
-  resources :parents
   resources :baby_names
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :parents do 
+    resources :baby_names
+  end
+  
+  get '/', to: "teams#home"
+  get '/sign_in', to: "teams#sign_in"
+  get'/sign_up', to: "teams#sign_up"
 end
