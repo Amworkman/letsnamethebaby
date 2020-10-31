@@ -1,4 +1,2 @@
-class BabiesController < ApplicationController
-
-    
+class BabiesController < ApplicationController    
 end
