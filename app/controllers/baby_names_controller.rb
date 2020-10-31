@@ -1,6 +1,10 @@
 class BabyNamesController < ApplicationController
 
     def index 
+        if params[:parent_id]
+            set_parent
+        end
+
         @baby_names = BabyName.all
     end
 
@@ -11,31 +15,57 @@ class BabyNamesController < ApplicationController
     def create 
         @baby_name = BabyName.new(baby_name_params)
 
-        if baby_name.save 
-            redirect_to parents_path
+        if @baby_name.save 
+            redirect_to baby_name_path(@baby_name)
         else
             render :new
-            # with errors
+            raise errors.full_message
         end
     end
 
     def show
-        @baby_name = BabyName.find_by(name: params[:search])
+        if params[:parent_id]
+            set_parent
+        end
+
+        if params[:name]
+            @baby_name = BabyName.find_by(name: params[:name])
+        else
+            @baby_name = BabyName.find_by_id(params[:id])
+        end
+
+        if !@baby_name
+            redirect_to new_parent_baby_name_path(@parent, @baby_name)
+        elsif @baby_name.origin == nil || @baby_name.meaning == nil
+            redirect_to edit_parent_baby_name_path(@parent, @baby_name)
+        end
     end
 
-    def edit 
+    def edit
+        if params[:parent_id]
+            set_parent 
+        end 
+
         @baby_name = BabyName.find_by_id(params[:id])
     end
 
     def update 
-        @baby_name = BabyName.find_by_id(params[:id])
-        ## baby_name_params
 
-        if baby_name.save 
-            redirect_to parents_path
+        if params[:parent_id]
+            set_parent
+        end
+
+        @baby_name = BabyName.find_by_id(params[:id])
+        @baby_name.update(baby_name_params)
+
+        if @baby_name.save 
+        
+            redirect_to parent_path(@parent)
+            # Name saved sucsefully,
+            # thanks for your contribution
         else
             render :new
-            # with errors
+            raise errors.full_message
         end
     end
 
@@ -43,6 +73,10 @@ class BabyNamesController < ApplicationController
 
     def baby_name_params
         params.require(:baby_name).permit(:name, :origin, :meaning, :gender, :variations, :search)
-    end        
+    end  
+    
+    def set_parent 
+        @parent = Parent.find_by_id(params[:parent_id])
+    end
 
 end
