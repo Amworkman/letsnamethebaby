@@ -1,4 +1,4 @@
 class Baby < ApplicationRecord
-    belongs_to :parent
+    has_many :parents
     belongs_to :team
 end
