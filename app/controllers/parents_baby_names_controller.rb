@@ -1,3 +1,0 @@
-class ParentsBabyNamesController < ApplicationController
-
-end
