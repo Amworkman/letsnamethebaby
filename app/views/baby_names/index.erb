@@ -1,5 +1,15 @@
-shows a list of baby names linked to baby name show
+<h1>All baby names:</h1>
+
+<% if @parent %>
+    <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
+<% end %>
 
 <% @baby_names.each do |baby_name| %>
-    <%= link_to baby_name.name, baby_name_path(baby_name)%><br>
+    <%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%><br>
 <% end%>
+
+<% if @parent %>
+    <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
+<% end %>
+
+order by origin?
