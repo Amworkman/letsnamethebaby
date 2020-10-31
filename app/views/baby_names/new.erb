@@ -1,0 +1,17 @@
+<%= @baby_name.name %>
+
+<%= form_with model: @baby_name do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :origin, "What is the origin of this name?" %>
+    <%= f.text_field :origin %><br>
+    <%= f.label :meaning, "What about the meaning?" %>
+    <%= f.text_area :meaning %><br>
+    <%= f.label :gender, "Is this name primarily used for boys or girls?" %>
+    <%= f.radio_button :gender, "Male" %> Boys
+    <%= f.radio_button :gender, "female"%> Girls <br>
+    <%= f.label :variations, "Are there any variations of this name? (separate variations with a comma)" %>
+    <%= f.text_area :variations %>
+
+    <%= f.submit %>
+<% end %>
