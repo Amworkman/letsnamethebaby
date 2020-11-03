@@ -10,6 +10,6 @@ It has <%= @baby_name.origin %> origins, and means
     <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
 <% end %>
 
-<% if @parent %>
+<% if !@parent.baby_names.include?(@baby_name) %>
     <%= button_to "Add this name to my list", parent_path(@parent), :method => "get", params: {baby_name_id: @baby_name} %>
 <% end %>
