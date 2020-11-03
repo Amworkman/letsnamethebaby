@@ -1,1 +1,25 @@
-edit (as new)
+<%= form_with model: @team, local: true do |f| %>
+
+    <% if !@team.teamname %>
+        <%= f.label :teamname, "Teamname:" %><br>
+        <%= f.text_field :teamname, autofocus: true %><br><br><br>
+    <% else %>
+        <p>Teamname:</p>
+        <h2><%= @team.teamname %></h2>
+    <% end %>
+
+    <%= f.fields_for :parents do |p| %>
+
+        <%= p.label :name, "Parent name:"%><br>
+        <%= p.text_field :name %><br>
+
+        <%= p.label :roll, "Is going to be a:" %><br>
+        <%= p.radio_button :roll, "Mommy" %> Mommy 
+        <%= p.radio_button :roll, "Daddy" %> Daddy
+        <%= p.radio_button :roll, "Parent" %> Parent<br><br>
+
+        
+    <% end %>
+We are expecting a:<br>
+    <%= f.submit "Boy", name: "gender" %> <%= f.submit "Girl", name: "gender" %> <%= f.submit "Baby", name: "gender"%>
+<% end %>
