@@ -1,5 +1,5 @@
 <p>Team:</p>
-    <h1> Teamname<%#= @team.teamname %></h1>
+    <h1> <%= @team.teamname %></h1>
     <%= @parent.name %><br><br><br>
     <%= form_tag parent_baby_name_path(@parent), :method => "get" do %>
         <%= label_tag :search, "baby name info:"%><br>
@@ -99,4 +99,5 @@
         <%= f.submit %>
         
     <% end %>
-    <%= button_to "Show top names", team_path(@team), :method => "get"%>
+    <%= button_to "Show top names", team_path(@team), :method => "get" %>
+    <%= button_to "Log Out", logout_path , :method => "delete" %>
