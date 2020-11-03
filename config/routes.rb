@@ -7,8 +7,20 @@ Rails.application.routes.draw do
   resources :parents do 
     resources :baby_names
   end
+
+  get 'google', to: redirect('/auth/google_oauth2')
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
   
-  get '/', to: "teams#home"
-  get '/sign_in', to: "teams#sign_in"
-  get'/sign_up', to: "teams#sign_up"
+  get 'welcome', to: "sessions#welcome"
+  get 'login', to: "sessions#login"
+  post 'login', to: "sessions#create"
+  get 'sign_up', to: "sessions#new"
+  post 'sign_up', to: "sessions#create"
+  delete 'logout', to: "sessions#destroy"
+
+  get '/', to: "sessions#home"
+  # get '/:anything', to: "application#wrong_page"
+  
+  # root to: "home#show"
 end
