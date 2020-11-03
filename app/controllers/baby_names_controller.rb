@@ -1,10 +1,7 @@
 class BabyNamesController < ApplicationController
-
-    def index 
-        if params[:parent_id]
-            set_parent
-        end
-
+    before_action :set_parent, only: [:index, :show, :edit, :update]
+    before_action :set_baby_name, only: [:edit, :update]
+    def index
         @baby_names = BabyName.all
     end
 
@@ -24,10 +21,6 @@ class BabyNamesController < ApplicationController
     end
 
     def show
-        if params[:parent_id]
-            set_parent
-        end
-
         if params[:name]
             @baby_name = BabyName.find_by(name: params[:name])
         else
@@ -42,20 +35,9 @@ class BabyNamesController < ApplicationController
     end
 
     def edit
-        if params[:parent_id]
-            set_parent 
-        end 
-
-        @baby_name = BabyName.find_by_id(params[:id])
     end
 
-    def update 
-
-        if params[:parent_id]
-            set_parent
-        end
-
-        @baby_name = BabyName.find_by_id(params[:id])
+    def update        
         @baby_name.update(baby_name_params)
 
         if @baby_name.save 
@@ -76,7 +58,13 @@ class BabyNamesController < ApplicationController
     end  
     
     def set_parent 
-        @parent = Parent.find_by_id(params[:parent_id])
+        if session[:parent_id]
+            @parent = current_parent
+        end
+    end
+
+    def set_baby_name
+        @baby_name = BabyName.find_by_id(params[:id])
     end
 
 end
