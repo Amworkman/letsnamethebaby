@@ -1,17 +1,15 @@
 class TeamsController < ApplicationController
+    before_action :set_team, only: [:show, :update, :edit]
 
     def new
-        @team = Team.new
-        2.times { @team.parents.build }
-       
+        @team = Team.new      
     end
 
     def create 
         @team = Team.new(team_params)       
-            
-        @baby = @team.babies.build(baby_params)
-           @team.parents.each { |parent| @baby.parents << parent }            
+
         if @team.save
+            session[:team_id] = @team.id
             redirect_to parents_path(:team_id => @team.id)
         else               
             render :new 
@@ -20,16 +18,28 @@ class TeamsController < ApplicationController
     end
 
     def edit
-        @team = Team.find_by_id(params[:id])
+        if @team.parents.length < 2
+            2.times { @team.parents.build }
+        end
+
+        if @team.parent_name != nil
+            @team.parents.first.name = @team.parent_name
+            @team.save
+        end
+        
     end
 
     def update 
-        @team = Team.find_by_id(params[:id])
+        
         @team.update(team_params)
-        @baby = @team.babies.first
-        @baby.update(baby_params)
+
+        if @team.babies == []
+            @baby = @team.babies.build(baby_params)
+            @team.parents.each { |parent| @baby.parents << parent }
+        end
 
         if @team.save
+            session[:team_id] = @team.id
             redirect_to parents_path
         else
            render :new
@@ -37,9 +47,7 @@ class TeamsController < ApplicationController
         end
     end
 
-    def show 
-        @team = Team.find_by_id(params[:id])
-
+    def show
         @parent_one_babies = @team.parents.first.baby_names
         @parent_two_babies = @team.parents.last.baby_names
 
@@ -49,11 +57,16 @@ class TeamsController < ApplicationController
     private 
 
     def team_params
-        params.require(:team).permit(:teamname, parents_attributes: [:name, :roll])
+        params.require(:team).permit(:teamname, :password, parents_attributes: [:name, :roll])
     end
 
     def baby_params
         params.permit(:gender) 
     end
+
+    def set_team
+        @team = current_team
+    end
+
         
 end
