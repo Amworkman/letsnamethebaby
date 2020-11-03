@@ -1,12 +1,13 @@
 class ParentsController < ApplicationController
-    before_action :set_parent, only: [:index, :show, :update]
-    def index 
-        @team = Team.find_by_id(params[:team_id])       
-        @parents = Parent.where(:team_id => params[:team_id])        
+    before_action :set_team, only: [:index, :show, :update]
+    before_action :set_parent, only: [:show, :update]
+    
+    def index    
+        @parents = current_team.parents        
     end
     
     def show
-        @team = @parent.team
+        session[:parent_id] = @parent.id
         @baby_names = BabyName.all
 
         if params[:baby_name_id]
@@ -21,7 +22,6 @@ class ParentsController < ApplicationController
             @baby_names = BabyName.all 
             @parent.parents_baby_names.destroy_all
             @parent.update(parent_params)
-            @team = @parent.team
         
         if @parent.save
             render :show
@@ -39,5 +39,9 @@ class ParentsController < ApplicationController
 
     def set_parent 
         @parent = Parent.find_by_id(params[:id]) 
+    end
+
+    def set_team
+        @team = current_team
     end
 end
