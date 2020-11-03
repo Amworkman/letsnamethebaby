@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_184740) do
+ActiveRecord::Schema.define(version: 2020_11_03_003352) do
 
   create_table "babies", force: :cascade do |t|
     t.string "gender"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_184740) do
     t.string "name"
     t.string "roll"
     t.integer "team_id"
+    t.integer "baby_id"
     t.index ["team_id"], name: "index_parents_on_team_id"
   end
 
@@ -45,6 +46,11 @@ ActiveRecord::Schema.define(version: 2020_10_28_184740) do
 
   create_table "teams", force: :cascade do |t|
     t.string "teamname"
+    t.string "password_digest"
+    t.string "provider"
+    t.string "uid"
+    t.string "parent_name"
+    t.string "email"
   end
 
 end
