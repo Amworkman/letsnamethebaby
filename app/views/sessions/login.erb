@@ -1,0 +1,10 @@
+<%= form_with url: '/login', local: true do |f| %>
+    <%= f.label :teamname, "Teamname:" %><br>
+    <%= f.text_field :teamname, autofocus: true %><br><br><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "new-password"%><br>
+    
+    <%= f. submit "Sign In"  %>  
+<% end %>
+<%= button_to "Sign in with Google", google_path, :method => "get"%>
