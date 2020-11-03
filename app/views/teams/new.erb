@@ -1,6 +1,11 @@
-<%= form_with model: @team do |f| %>
-    <%= f.label :teamname, "Teamname:" %><br>
-    <%= f.text_field :teamname %><br><br><br>
+<%= form_with model: @team, local: true do |f| %>
+
+    <% if !@team.teamname %>
+        <%= f.label :teamname, "Teamname:" %><br>
+        <%= f.text_field :teamname, autofocus: true %><br><br><br>
+    <% else %>
+        <h2><%= @team.teamname %></h2>
+    <% end %>
 
     <%= f.fields_for :parents do |p| %>
 
