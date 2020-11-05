@@ -1,15 +1,68 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>LetsNameTheBaby</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<html class="background--<%=baby_gender%>">
 
-  <body>
+
+  	<head>
+	  
+    	<title>LetsNameTheBaby</title>
+    	<%= csrf_meta_tags %>
+    	<%= csp_meta_tag %>
+
+    	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  	</head>
+	  
+  	<body class="blur">
+		
+
+        <section class="babynameapp">
+			<header class="header">
+			<% if parent_logged_in? %>
+				<h4>Team:</h4>
+			<% end %>
+
+			<% if team_logged_in? %>
+				<h1 <% if baby_gender == "Boy" %>
+						style="color:lightblue"
+					<% elsif baby_gender == "Girl" %>
+						style="color:lightpink"
+					<% else %>
+						style="color:yellow"
+					<% end %>>
+
+					<%= current_team.teamname  %></h1>
+			<% end %>
+
+			
+
+			</header>
+			
+        
+			<section class="main" style="display: block;">
+			<div class="info">
+
     <%= yield %>
-  </body>
+	</section>
+			<footer class="footer" style="display: block;">
+			<% if parent_logged_in?%>
+				<ul class="filters">
+					<li>
+						<%= link_to "Update Team", edit_team_path(current_team), :method => "get" %>
+					</li>
+					<li>
+						<%= link_to "My List", parent_path(current_parent), :method => "get" %>	
+					</li>
+					<li>
+						<%= link_to "Show Matching Names", team_path(current_team) %>
+					</li>
+					<li>
+                        <%= link_to "Log Out", logout_path, :method => "delete" %>
+					</li>
+				</ul>
+			<% end %>
+			</footer>
+		</section>
+  	</body>
+	  	
 </html>
