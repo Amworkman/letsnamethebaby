@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+	def home 
+		render layout: 'home'
+	end
 
 	def new
 		@team = Team.new
