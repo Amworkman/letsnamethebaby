@@ -10,4 +10,5 @@ class BabyName < ApplicationRecord
         end
     end
 
+    
 end
