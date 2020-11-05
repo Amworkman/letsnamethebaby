@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
 <html class="background--<%=baby_gender%>">
-
-
   	<head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
@@ -19,18 +17,13 @@
 
     	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= favicon_link_tag asset_path('baby.png') %>
   	</head>
-
   	<body>
-
-		<div class="home-box">
-        
+		<div class="home-box">      
 
     <%= yield %>
     
-        </div>
-	
-  	</body>
-      
-	  	
+        </div>	
+  	</body>  	
 </html>
