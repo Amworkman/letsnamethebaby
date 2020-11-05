@@ -30,13 +30,14 @@ class TeamsController < ApplicationController
     end
 
     def update 
-        
-        @team.update(team_params)
+        current_team.parents.clear
+        current_team.babies.clear
 
-        if @team.babies == []
-            @baby = @team.babies.build(baby_params)
-            @team.parents.each { |parent| @baby.parents << parent }
-        end
+        current_team.update(team_params)
+               
+        @baby = current_team.babies.build(baby_params)
+        current_team.parents.each { |parent| @baby.parents << parent }
+        
 
         if @team.save
             session[:team_id] = @team.id
@@ -48,6 +49,7 @@ class TeamsController < ApplicationController
     end
 
     def show
+       
         @parent_one_babies = @team.parents.first.baby_names
         @parent_two_babies = @team.parents.last.baby_names
 
