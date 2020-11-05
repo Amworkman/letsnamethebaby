@@ -1,15 +1,33 @@
-<h1>All baby names:</h1>
+<br><br>
+
+<h2>All baby names:</h2>
+
+<br><br>
 
 <% if @parent %>
-    <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
+    <%= button_to "Back to my list", parent_path(@parent), class: "button2", :method => "get"%>
 <% end %>
 
-<% @baby_names.each do |baby_name| %>
-    <%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%><br>
-<% end%>
+<br>
+
+<% if current_parent.baby.gender == "Boy"%>
+    <% boy_names.each do |baby_name| %>
+        <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+    <% end%>
+<% end %>
+
+<% if current_parent.baby.gender == "Girl"%>
+    <% girl_names.each do |baby_name| %>
+        <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+    <% end%>
+<% end %>
+
+<%if current_parent.baby.gender == "Baby"%>
+    <% all_names.each do |baby_name| %>
+        <h5 style="color:yellow"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+    <%end%>
+<%end %>
 
 <% if @parent %>
-    <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
+    <%= button_to "Back to my list", parent_path(@parent), class: "button2", :method => "get"%>
 <% end %>
-
-order by origin?
