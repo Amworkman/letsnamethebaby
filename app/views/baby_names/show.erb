@@ -1,15 +1,37 @@
-<h1><%= @baby_name.name %></h1>
+
+<style>
+
+    h6 {
+        font-size: 70px;
+    }
+</style>
+
+<% if @baby_name.gender == "Male"%>
+    <h6 style="color:lightblue"><%= @baby_name.name %></h6>
+<% elsif @baby_name.gender == "Female" %>%
+    <h6 style="color:lightpink"><%= @baby_name.name %></h6>
+<% else %>
+    <h6 style="color:yellow"><%= @baby_name.name %></h6>
+<% end %>
+
+
+
 <h3><%= @baby_name.name %> Is typicaly a <%= @baby_name.gender.downcase %> name.
 It has <%= @baby_name.origin %> origins, and means
 "<%= @baby_name.meaning %>"</h3>
+
 <%if @baby_name.variations %>
-    <p>Variations of <%= @baby_name.name %> include: <%= @baby_name.variations %></p>
+   <p>Variations of <%= @baby_name.name %> include: <%= @baby_name.variations %></p>
 <% end %>
+
+<br><br>
 
 <% if @parent %>
-    <%= button_to "Back to my list", parent_path(@parent), :method => "get"%>
+    <%= button_to "Back to my list", parent_path(@parent), class: "button2", :method => "get"%>
 <% end %>
 
+<br>
+
 <% if !@parent.baby_names.include?(@baby_name) %>
-    <%= button_to "Add this name to my list", parent_path(@parent), :method => "get", params: {baby_name_id: @baby_name} %>
-<% end %>
+    <%= button_to "Add this name to my list", parent_path(@parent), class: "button2", :method => "get", params: {baby_name_id: @baby_name} %>
+<% end %><br><br>
