@@ -1,16 +1,25 @@
+<style>
 
-<h1><%= @baby_name.name %></h1><br>
+    h6 {
+        font-size: 70px;
+    }
+</style>
+
+<h6 style="color:yellow"><%= @baby_name.name %></h6>
 
 <%= form_with model: @baby_name do |f| %>
-    <%= f.label :origin, "What is the origin of this name?" %>
-    <%= f.text_field :origin %><br>
-    <%= f.label :meaning, "What about the meaning?" %>
-    <%= f.text_area :meaning %><br>
-    <%= f.label :gender, "Is this name primarily used for boys or girls?" %>
-    <%= f.radio_button :gender, "Male" %> Boys
-    <%= f.radio_button :gender, "female"%> Girls <br>
-    <%= f.label :variations, "Are there any variations of this name? (separate variations with a comma)" %>
-    <%= f.text_area :variations %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br><br><br><br>
+    <%= f.label :origin, "What is the origin of this name?" %><br>
+    <%= f.text_field :origin %><br><br><br>
+    <%= f.label :meaning, "What about the meaning?" %><br>
+    <%= f.text_area :meaning %><br><br><br>
+    <%= f.label :gender, "Is this name primarily used for boys or girls?" %><br><h3> 
+    <%= f.radio_button :gender, "Male" %>Boys
+    <%= f.radio_button :gender, "female"%> Girls
+    <%= f.radio_button :gender, "baby"%> Both </h3><br><br>
+    <%= f.label :variations, "Are there any variations of this name? (separate variations with a comma)" %><br><br>
+    <%= f.text_area :variations %><br><br><br>
 
-    <%= f.button :submit, name: "parent_id", value: @parent.id %>
+    <%= f.submit :class => "button2" %><br><br><br>
 <% end %>
