@@ -1,7 +1,15 @@
-<p>team:</p>
-    <h1><%= @team.teamname %></h1><br>
-
-<h3>Who are you?</h3>
+<br><br><br>
+<div class="box">
+    <h6>Who are you?</h6><br>
+</div>
+<br>
 <% @parents.each do |parent| %>
-    <%=link_to parent.name, parent_path(parent)%><br><br>
+    <% if parent.roll == "Daddy"%>
+        <h2 style="color:lightblue"><%=link_to "Papa #{parent.name}", parent_path(parent) %></h2><br>
+    <% elsif parent.roll == "Mommy" %>
+        <h2 style="color:lightpink"><%=link_to "Mama #{parent.name}", parent_path(parent) %></h2><br>
+    <% else %>
+        <h2 style="color:yellow"><%=link_to parent.name, parent_path(parent) %></h2><br>
+    <% end %>
 <% end %>
+<br><br><br>
