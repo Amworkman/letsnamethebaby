@@ -1,13 +1,13 @@
-<%= form_with url: '/login', local: true do |f| %>
-    <%= f.label :teamname, "Teamname:" %><br>
+<br><br><br><%= form_with url: '/login', local: true do |f| %>
+    <%= f.label :teamname, "Create a teamname:" %><br>
     <%= f.text_field :teamname, autofocus: true %><br><br><br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password"%><br>
+    <%= f.label :password, "Password:" %><br>
+    <%= f.password_field :password, autocomplete: "new-password"%><br><br>
     
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password"%><br>
+    <%= f.label :password_confirmation, "Confirm Password:" %><br>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password"%><br><br><br>
 
-    <%= f. submit "Sign Up" %> 
-<% end %>
- <%= button_to "Sign up with Google", google_path, :method => "get"%>
+    <%= f. submit "Sign Up", :class => "button2" %> 
+<% end %><br>
+ <%= button_to "Sign up with Google", google_path, class: "button2", :method => "get"%><br><br><br>
