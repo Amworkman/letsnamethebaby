@@ -1,5 +1,40 @@
-<h1>Here are your matching names:</h1>
+<h6 <% if current_team.parents.first.roll == "Daddy" %>
+        style="color:lightblue"
+    <% elsif current_team.parents.first.roll == "Mommy" %>
+        style="color:lightpink"
+    <% else %>
+        style="color:yellow"
+        <% end %>>
+    <%= current_team.parents.first.name %></h6>
+    <h3>&</h3>
+    <h6 <% if current_team.parents.last.roll == "Daddy" %>
+        style="color:lightblue"
+    <% elsif current_team.parents.last.roll == "Mommy" %>
+        style="color:lightpink"
+    <% else %>
+        style="color:yellow"
+        <% end %>>
+    <%= current_team.parents.last.name %></h6>
+<br>
+
+<% if @baby_names.length == 2 %>
+    <h2>You both love the name:</h2>  
+<% elsif @baby_names.length > 2 %>
+    <h2>You both love the names:</h2>
+<% else %>
+    <h2 style="color:yellow">No matches yet... keep trying!</h2>
+<% end %>
+
+
+<br>
 
 <% @baby_names.each do |baby_name| %>
-    <h3><%= link_to baby_name.name, baby_name_path(baby_name) %></h3>
+    <% if baby_name.gender == "Female"%>
+        <h5 style="color:lightpink"><%= link_to baby_name.name, baby_name_path(baby_name) %></h5>
+    <% elsif baby_name.gender == "Male" %> 
+        <h5 style="color:lightblue"><%= link_to baby_name.name, baby_name_path(baby_name) %></h5>
+    <% else %>
+        <h5 style="color:yellow"><%= link_to baby_name.name, baby_name_path(baby_name) %></h5>
+    <% end %>
 <% end %>
+<br><br>
