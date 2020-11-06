@@ -12,14 +12,13 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   
-  get 'welcome', to: "sessions#welcome"
   get 'login', to: "sessions#login"
   post 'login', to: "sessions#create"
   get 'sign_up', to: "sessions#new"
   post 'sign_up', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"
 
-  get '/', to: "sessions#home"
+  get '/', to: "sessions#home", as: 'home'
   # get '/:anything', to: "application#wrong_page"
   
   # root to: "home#show"
