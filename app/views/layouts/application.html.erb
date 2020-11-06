@@ -64,6 +64,12 @@
                         <%= link_to "Log Out", logout_path, method: "delete" %>
 					</li>
 				</ul>
+			<% elsif team_logged_in? %>
+				<ul class="filters">
+					<li>
+						<%= link_to "Home", home_path, :method => "get" %>	
+					</li>
+				</ul>
 			<% else %>
 				<ul class="filters">
 					<li>
