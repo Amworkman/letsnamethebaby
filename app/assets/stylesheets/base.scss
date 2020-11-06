@@ -349,11 +349,13 @@ a:hover {
         }
 
 #fade .button3 {
+    position: relative;
     display:inline-block;
     padding:0.5em 3em;
     background: #f5fac600;
     border:0.16em solid #929292;
-    margin:0 0.3em 0.3em 0;
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box;
     text-decoration:none;
     text-transform:uppercase;
@@ -361,7 +363,7 @@ a:hover {
     font-weight:400;
     font-size: 42px;
     color:#222222;
-    text-align:center;
+    text-align: center;
     transition: all 0.15s;
     backdrop-filter: blur(10px) grayscale(0.76);
     -moz-backdrop-filter: blur(20px);
