@@ -12,11 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2020_11_03_003352) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "babies", force: :cascade do |t|
     t.string "gender"
-    t.integer "parent_id"
-    t.integer "team_id"
-    t.index ["parent_id"], name: "index_babies_on_parent_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_babies_on_team_id"
   end
 
   create_table "baby_names", force: :cascade do |t|
@@ -30,14 +32,15 @@ ActiveRecord::Schema.define(version: 2020_11_03_003352) do
   create_table "parents", force: :cascade do |t|
     t.string "name"
     t.string "roll"
-    t.integer "team_id"
-    t.integer "baby_id"
+    t.bigint "team_id"
+    t.bigint "baby_id"
+    t.index ["baby_id"], name: "index_parents_on_baby_id"
     t.index ["team_id"], name: "index_parents_on_team_id"
   end
 
   create_table "parents_baby_names", force: :cascade do |t|
-    t.integer "parent_id"
-    t.integer "baby_name_id"
+    t.bigint "parent_id"
+    t.bigint "baby_name_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["baby_name_id"], name: "index_parents_baby_names_on_baby_name_id"
