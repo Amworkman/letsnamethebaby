@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
             session[:team_id] = @team.id
             redirect_to parents_path
         else
-           render :new
+           render :edit
         end
     end
 
