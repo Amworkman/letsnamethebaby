@@ -43,7 +43,6 @@ class TeamsController < ApplicationController
             redirect_to parents_path
         else
            render :new
-           raise errors.full_message
         end
     end
 
