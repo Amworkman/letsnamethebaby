@@ -1,8 +1,7 @@
 <div class="errors-font">
 
-<% if current_team.errors.any? %>
-  <br><br><%= current_team.errors.full_messages.to_sentence %>
-<% end %>
+ 
+<br><br><%= flash[:alert]%>
 
 </div>
 
