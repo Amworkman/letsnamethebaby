@@ -34,12 +34,11 @@ class TeamsController < ApplicationController
         current_team.babies.clear
 
         current_team.update(team_params)
-               
+             
         @baby = current_team.babies.build(baby_params)
         current_team.parents.each { |parent| @baby.parents << parent }
-        
 
-        if @team.save
+        if current_team.save
             session[:team_id] = @team.id
             redirect_to parents_path
         else

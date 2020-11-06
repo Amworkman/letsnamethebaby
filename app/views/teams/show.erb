@@ -17,10 +17,10 @@
     <%= current_team.parents.last.name %></h6>
 <br>
 
-<% if @baby_names.length == 2 %>
-    <h2>You both love the name:</h2>  
-<% elsif @baby_names.length > 2 %>
-    <h2>You both love the names:</h2>
+<% if @baby_names.length == 1 %>
+    <h2 style="color:yellow">You both love the name:</h2>  
+<% elsif @baby_names.length > 1 %>
+    <h2 style="color:yellow">You both love the names:</h2>
 <% else %>
     <h2 style="color:yellow">No matches yet... keep trying!</h2>
 <% end %>
