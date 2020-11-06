@@ -63,7 +63,20 @@
                         <%= link_to "Log Out", logout_path, method: "delete" %>
 					</li>
 				</ul>
+			<% else %>
+				<ul class="filters">
+					<li>
+						<%= link_to "Sign In", login_path, :method => "get" %>
+					</li>
+					<li>
+						<%= link_to "Home", home_path, :method => "get" %>	
+					</li>
+					<li>
+						<%= link_to "Sign Up", sign_up_path, :method => "get" %>
+					</li>
+				</ul>
 			<% end %>
+
 			</footer>
 		</section>
   	</div>
