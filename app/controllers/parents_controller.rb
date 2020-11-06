@@ -27,7 +27,6 @@ class ParentsController < ApplicationController
             render :show
         else
             render :index
-            raise errors.full_messages
         end
     end
 

@@ -16,7 +16,6 @@ class BabyNamesController < ApplicationController
             redirect_to baby_name_path(@baby_name)
         else
             render :new
-            raise errors.full_message
         end
     end
 
@@ -47,7 +46,6 @@ class BabyNamesController < ApplicationController
             # thanks for your contribution
         else
             render :new
-            raise errors.full_message
         end
     end
 

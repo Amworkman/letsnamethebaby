@@ -13,7 +13,6 @@ class TeamsController < ApplicationController
             redirect_to parents_path(:team_id => @team.id)
         else               
             render :new 
-            raise errors.full_message
         end 
     end
 
