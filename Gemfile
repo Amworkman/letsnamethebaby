@@ -7,6 +7,7 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg'
 gem "figaro"
+gem "rails_serve_static_assets"
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
