@@ -1,3 +1,11 @@
+<div class="errors-font">
+
+<% if current_team.errors.any? %>
+  <br><br><%= current_team.errors.full_messages.to_sentence %>
+<% end %>
+
+</div>
+
 <%= form_tag parent_baby_name_path(current_parent), :method => "get" do %> 
     <%= text_field_tag :name, params[:name], placeholder: "Seach for names here...", list: "baby_names_autocomplete"  %>
         <datalist id="baby_names_autocomplete">

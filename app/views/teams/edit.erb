@@ -1,6 +1,10 @@
+<div class="errors-font">
+
 <% if current_team.errors.any? %>
-  <%= current_team.errors.full_messages %>
+  <br><br><%= current_team.errors.full_messages.to_sentence %>
 <% end %>
+
+</div>
 
 <%= form_with model: @team, local: true do |f| %>
 

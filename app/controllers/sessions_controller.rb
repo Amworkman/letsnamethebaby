@@ -23,9 +23,14 @@ class SessionsController < ApplicationController
 		elsif params[:commit]["Sign Up"]
 			@team = Team.create(team_params)
 			if @team && @team.authenticate(params[:password])
-        		session[:team_id] = @team.id
-        		redirect_to edit_team_path(@team)
-      		else
+				session[:team_id] = @team.id
+				if @team.save
+					redirect_to edit_team_path(@team)
+				else
+					render :new
+				end						
+			else
+				byebug
         		redirect_to sign_up_path
       		end
 		else

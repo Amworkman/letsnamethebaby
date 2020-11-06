@@ -1,3 +1,10 @@
+<div class="errors-font">
+
+<% if current_team.errors.any? %>
+  <br><br><%= current_team.errors.full_messages.to_sentence %>
+<% end %>
+
+</div>
 <br><br><br><%= form_with url: '/login', local: true do |f| %>
     <%= f.label :teamname, "Create a teamname:" %><br>
     <%= f.text_field :teamname, autofocus: true %><br><br><br>
