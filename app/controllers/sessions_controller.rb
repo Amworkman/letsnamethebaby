@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
 					render :new
 				end						
 			else
-				byebug
         		redirect_to sign_up_path
       		end
 		else
@@ -38,8 +37,9 @@ class SessionsController < ApplicationController
       		if @team && @team.authenticate(params[:password])
         		session[:team_id] = @team.id
         		redirect_to parents_path(@team)
-      		else
-        		redirect_to sign_up_path
+			  else
+				flash[:alert] = "Incorect Teamname or Password"
+        		render :login
       		end
     	end
   	end
