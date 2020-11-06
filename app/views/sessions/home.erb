@@ -1,19 +1,11 @@
 
 <div id="fade">
-
+    
 <% if team_logged_in? %>
-		<h1 <% if baby_gender == "Boy" %>
-			style="color:lightblue"
-		<% elsif baby_gender == "Girl" %>
-			style="color:lightpink"
-		<% else %>
-			style="color:yellow"
-		<% end %>>
-
-	<%= current_team.teamname %></h1>
     <%= button_to "My List", parents_path, class: "button3", :method => "get"%>
     <br><br>
 <% end %>
+    
 
 <%= button_to "Sign In", login_path, class: "button3", :method => "get"%>
 <br><br>
