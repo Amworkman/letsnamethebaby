@@ -87,6 +87,7 @@ button {
 
 
 .blur {
+    align-content: center;
     background-color:rgba(255, 255, 255, 0);
     backdrop-filter: blur(42px) grayscale(0.76);
     -moz-backdrop-filter: blur(20px);
@@ -700,6 +701,40 @@ html .clear-completed:active {
     padding: 20px;
 	box-sizing: border-box;
 }
+
+.question-box {
+    position: relative;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96.5%;
+    padding: 0px;
+    margin:2px 10px;
+    background:rgb(255, 250, 181) image-url('question_marks.png') no-repeat;
+    background-size: 350px;
+    background-position: center;
+    border-radius: 12px;
+    border: 1px solid rgba(153, 153, 153, 0);
+	box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.137);
+	box-sizing: border-box;
+    }
+
+.heart-box {
+    
+    position: relative;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96.5%;
+    padding: 0px;
+    margin:2px 10px;
+    background:rgba(255, 250, 181, 0.514) image-url('hearts.png') no-repeat center center fixed;
+    background-size: 400px;
+    border-radius: 12px;
+    border: 1px solid rgba(153, 153, 153, 0);
+	box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.137);
+	box-sizing: border-box;
+    }
 
 .box {
 

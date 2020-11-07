@@ -1,3 +1,5 @@
+<div class="heart-box">
+
 <h6 <% if current_team.parents.first.roll == "Daddy" %>
         style="color:lightblue"
     <% elsif current_team.parents.first.roll == "Mommy" %>
@@ -16,7 +18,7 @@
         <% end %>>
     <%= current_team.parents.last.name %></h6>
 <br>
-
+</div>
 <% if @baby_names.length == 1 %>
     <h2 style="color:yellow">You both love the name:</h2>  
 <% elsif @baby_names.length > 1 %>
@@ -24,6 +26,8 @@
 <% else %>
     <h2 style="color:yellow">No matches yet... keep trying!</h2>
 <% end %>
+
+
 
 
 <br>
