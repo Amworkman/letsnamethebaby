@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore Omniauth key/secret
-/config/initializers/omniauth.rb
+/config/initializers/.omniauth.rb
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
