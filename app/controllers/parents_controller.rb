@@ -11,7 +11,7 @@ class ParentsController < ApplicationController
         @baby_names = BabyName.all
 
         if params[:baby_name_id]
-            find_and_add_baby_name
+            current_parent.find_and_add_baby_name
         end 
         10.times {@baby_name = @parent.baby_names.build}  
     end
