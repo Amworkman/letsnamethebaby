@@ -11,6 +11,11 @@ class Parent < ApplicationRecord
             flash[:alert] = "Your list is full"
         end
     end
+
+    def find_and_add_baby_name
+            @baby_name = BabyName.find_by_id(params[:baby_name_id])
+            current_parent.add_baby_name_to_list(current_parent, @baby_name)
+    end
     
     def baby_names_attributes=(baby_name_attributes)
         baby_name_attributes.values.each do |baby_name_attribute|
