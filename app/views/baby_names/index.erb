@@ -12,36 +12,39 @@
 
 <br><br>
 
-<% if @parent %>
-    <%= button_to "Back to my list", parent_path(@parent), class: "button2", :method => "get"%>
+<% if current_parent %>
+    <%= button_to "Back to my list", parent_path(current_parent), class: "button2", :method => "get"%>
 <% end %>
 
 <br>
 
 <% if current_parent.baby.gender == "Boy"%>
-    <% boy_names.each do |baby_name| %>
-        <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+    <% names = boy_names.sort %>
+    <%names.each do |baby_name| %>
+        <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
     <% end%>
 <% end %>
 
 <% if current_parent.baby.gender == "Girl"%>
-    <% girl_names.each do |baby_name| %>
-        <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+    <% names = girl_names.sort %>
+    <%names.each do |baby_name| %>
+        <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
     <% end%>
 <% end %>
 
 <%if current_parent.baby.gender == "Baby"%>
-    <% all_names.each do |baby_name| %>
+    <% names = all_names.sort %>
+    <%names.each do |baby_name| %>
         <% if baby_name.gender == "Male" %>
-            <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+            <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
         <% elsif baby_name.gender == "Female" %>
-            <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+            <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
         <% else %>
-            <h5 style="color:yellow"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+            <h5 style="color:yellow"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
         <% end %>
     <%end%>
 <%end %>
 
-<% if @parent %>
-    <%= button_to "Back to my list", parent_path(@parent), class: "button2", :method => "get"%>
+<% if current_parent %>
+    <%= button_to "Back to my list", parent_path(current_parent), class: "button2", :method => "get"%>
 <% end %>

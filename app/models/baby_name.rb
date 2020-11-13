@@ -5,16 +5,18 @@ class BabyName < ApplicationRecord
     validates :name, uniqueness: true  
     
     def format_baby_name_info(baby_name)
-        @baby_name.name.capitalize
-
-        if @baby_name.origin
-            @baby_name.origin.capitalize
+        baby_name.name.capitalize!
+        if baby_name.origin
+            baby_name.origin.capitalize!
         end
-        if @baby_name.meaning
-            @baby_name.meaning.titleize
+        if baby_name.gender
+            baby_name.gender.capitalize!
         end
-        if @baby_name.variations
-            @baby_name.variations.capitalize
+        if baby_name.meaning
+            baby_name.meaning.titleize
+        end
+        if baby_name.variations
+            baby_name.variations.titleize
         end
     end
 end
