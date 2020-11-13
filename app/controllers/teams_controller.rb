@@ -22,21 +22,13 @@ class TeamsController < ApplicationController
         end
 
         if @team.parent_name != nil
-            @team.parents.first.name = @team.parent_name
-            @team.save
+            current_team.set_name
         end
         
     end
 
     def update 
-        current_team.parents.clear
-        current_team.babies.clear
-
-        current_team.update(team_params)
-             
-        @baby = current_team.babies.build(baby_params)
-        current_team.parents.each { |parent| @baby.parents << parent }
-
+        current_team.reset_and_update_team
         if current_team.save
             session[:team_id] = @team.id
             redirect_to parents_path
@@ -45,12 +37,8 @@ class TeamsController < ApplicationController
         end
     end
 
-    def show
-       
-        @parent_one_babies = @team.parents.first.baby_names
-        @parent_two_babies = @team.parents.last.baby_names
-
-        @baby_names = @team.baby_names_arr_dupes(@parent_one_babies, @parent_two_babies)
+    def show       
+        current_team.common_names
     end
 
     private 
