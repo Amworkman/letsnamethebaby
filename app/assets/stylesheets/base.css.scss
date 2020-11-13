@@ -353,7 +353,7 @@ a:hover {
     position: relative;
     display:inline-block;
     padding:0.5em 3em;
-    background: #f5fac600;
+    background: #505050bb;
     border:0.16em solid #929292;
     margin-left: auto;
     margin-right: auto;
@@ -363,7 +363,7 @@ a:hover {
     font-family:'Poppins-Bold';
     font-weight:400;
     font-size: 42px;
-    color:#222222;
+    color:#a2ddff;
     text-align: center;
     transition: all 0.15s;
     backdrop-filter: blur(10px) grayscale(0.76);
@@ -377,7 +377,7 @@ a:hover {
     -o-animation: fadein 5s; /* Opera */
     }
     #fade .button3:hover{
-        color:#DDDDDD;
+        color:#ebc7f0;
         border-color:#535353;
         }
 
