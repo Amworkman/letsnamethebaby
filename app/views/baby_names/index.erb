@@ -19,22 +19,22 @@
 <br>
 
 <% if current_parent.baby.gender == "Boy"%>
-    <% names = boy_names.sort %>
-    <%names.each do |baby_name| %>
+    <% names = boy_names.sort {|a,b| a.name <=> b.name} %>
+    <% names.each do |baby_name| %>
         <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
     <% end%>
 <% end %>
 
 <% if current_parent.baby.gender == "Girl"%>
-    <% names = girl_names.sort %>
-    <%names.each do |baby_name| %>
+    <% names = girl_names.sort {|a,b| a.name <=> b.name} %>
+    <% names.each do |baby_name| %>
         <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
     <% end%>
 <% end %>
 
 <%if current_parent.baby.gender == "Baby"%>
-    <% names = all_names.sort %>
-    <%names.each do |baby_name| %>
+    <% names = all_names.sort {|a,b| a.name <=> b.name} %>
+    <% names.each do |baby_name| %>
         <% if baby_name.gender == "Male" %>
             <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(current_parent, baby_name)%></h5>
         <% elsif baby_name.gender == "Female" %>
