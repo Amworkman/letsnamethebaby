@@ -11,11 +11,9 @@ class ParentsController < ApplicationController
         @baby_names = BabyName.all
 
         if params[:baby_name_id]
-            @baby_name = BabyName.find_by_id(params[:baby_name_id])
-            @parent.add_baby_name_to_list(@parent, @baby_name)
+            find_and_add_baby_name
         end 
-
-           10.times {@baby_name = @parent.baby_names.build}  
+        10.times {@baby_name = @parent.baby_names.build}  
     end
 
     def update 
