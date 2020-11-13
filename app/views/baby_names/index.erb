@@ -32,7 +32,13 @@
 
 <%if current_parent.baby.gender == "Baby"%>
     <% all_names.each do |baby_name| %>
-        <h5 style="color:yellow"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+        <% if baby_name.gender == "Male" %>
+            <h5 style="color:lightblue"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+        <% elsif baby_name.gender == "Female" %>
+            <h5 style="color:lightpink"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+        <% else %>
+            <h5 style="color:yellow"><%= link_to baby_name.name, parent_baby_name_path(@parent, baby_name)%></h5>
+        <% end %>
     <%end%>
 <%end %>
 
