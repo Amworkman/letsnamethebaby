@@ -28,7 +28,7 @@ class BabyNamesController < ApplicationController
 
         if !@baby_name
             redirect_to new_parent_baby_name_path(@parent, @baby_name)
-        elsif @baby_name.origin == nil || @baby_name.meaning == nil
+        elsif @baby_name.origin == nil || @baby_name.meaning == nil || @baby_name.gender == nil
             redirect_to edit_parent_baby_name_path(@parent, @baby_name)
         end
     end
