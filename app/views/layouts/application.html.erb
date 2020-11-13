@@ -64,7 +64,7 @@
                         <%= link_to "Log Out", logout_path, method: "delete" %>
 					</li>
 				</ul>
-			<% elsif team_logged_in? %>
+			<% elsif team_logged_in? && current_team.password_digest %>				
 				<ul class="filters">
 					<li>
 						<%= link_to "Home", home_path, :method => "get" %>	
@@ -76,7 +76,7 @@
 					<li>
 						<%= link_to "Update Team", edit_team_path(current_team), :method => "get" %>
 					</li>
-					<% end %>
+					<% end %>				
 				</ul>
 			<% else %>
 				<ul class="filters">
