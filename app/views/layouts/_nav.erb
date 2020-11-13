@@ -1,6 +1,0 @@
-<%= if team_logged_in? %>
-    <ul>
-        <li><%= "Edit Team", edit_team_path(params[:team_id]) %></li>
-        <li><%= "Log out", logout_path, method: :delete %></li>
-    </ul>
-<% end %>
