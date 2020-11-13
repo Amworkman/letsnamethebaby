@@ -53,6 +53,8 @@ class ApplicationController < ActionController::Base
         BabyName.all
     end
 
+    
+
     # def wrong_page 
     #    render "/wrong_page"
     # end
