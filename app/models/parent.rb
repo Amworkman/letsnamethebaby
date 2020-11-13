@@ -8,7 +8,7 @@ class Parent < ApplicationRecord
         if parent.baby_names.length < 10 
             parent.baby_names << baby_name
         else
-            raise "Your list is full"
+            flash[:alert] = "Your list is full"
         end
     end
     
