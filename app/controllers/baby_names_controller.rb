@@ -11,6 +11,7 @@ class BabyNamesController < ApplicationController
 
     def create 
         @baby_name = BabyName.new(baby_name_params)
+        format_baby_name_info(@baby_name)
 
         if @baby_name.save 
             redirect_to baby_name_path(@baby_name)
@@ -38,7 +39,7 @@ class BabyNamesController < ApplicationController
 
     def update        
         @baby_name.update(baby_name_params)
-
+        format_baby_name_info(@baby_name)
         if @baby_name.save 
         
             redirect_to parent_path(@parent)
