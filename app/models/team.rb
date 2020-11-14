@@ -15,14 +15,14 @@ class Team < ApplicationRecord
         end
     end
 
-    def reset_and_update_team
+    def reset_and_update_team(team_params, baby_params)
         self.parents.clear
         self.babies.clear
 
         self.update(team_params)
              
-        @baby = current_team.babies.build(baby_params)
-        current_team.parents.each { |parent| @baby.parents << parent }
+        @baby = self.babies.build(baby_params)
+        self.parents.each { |parent| @baby.parents << parent }
     end
 
     def common_names

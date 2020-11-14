@@ -28,7 +28,7 @@ class TeamsController < ApplicationController
     end
 
     def update 
-        current_team.reset_and_update_team
+        current_team.reset_and_update_team(team_params, baby_params)
         if current_team.save
             session[:team_id] = @team.id
             redirect_to parents_path
