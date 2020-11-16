@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
     end
 
     def show       
-        current_team.common_names
+        @baby_names = @team.common_names
     end
 
     private 

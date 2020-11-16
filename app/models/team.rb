@@ -28,8 +28,7 @@ class Team < ApplicationRecord
     def common_names
         @parent_one_babies = self.parents.first.baby_names
         @parent_two_babies = self.parents.last.baby_names
-
-        @baby_names = self.baby_names_arr_dupes(@parent_one_babies, @parent_two_babies)
+        self.baby_names_arr_dupes(@parent_one_babies, @parent_two_babies)
     end
 
     def set_name
